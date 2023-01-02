@@ -96,7 +96,7 @@ int main(int argc, char **argv) {
     fputs(buffer, stdout);
 
 	fprintf(stderr, "[INFO]: closing pipe\n");
-    close(tx);
+    close(rx);
 	close(tx);
 
     unlink(FIFO_PATHNAME);
