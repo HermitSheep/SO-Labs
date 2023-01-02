@@ -1,0 +1,9 @@
+LAB 6
+
+3-> a primeira espera é átiva e a  segunda é bloqueada.
+
+Objetivo: Perceber o que é espera átiva, quais os seus problemas, e como evita-la.
+
+Espera átiva: Quando se tem várias threads a trabalhar com a mesma variavel, se a thread A precisar que a B mude a variavel de alguma forma antes de fazer o que quer (como numa linha de montagem) fica à espera que B acabe. Contudo como tem de ter o lock trancado, para ler a variavel e perceber se B já acabou, fica quase constantemente a correr no cpu, o que não é bom, porque outras threads não podem fazer nada ao mesmo tempo (se não me engano é isto o que acontece, mas posso estar errado).
+
+Solução: A solução é ler a variavel fora do lock e, se poder-mos avançar aí ativamos o lock e perguntamos a B se fez o que tinha a fazer. Esta segunda parte faz-se simplesmente tendo um pthread_cond_wait() dentro do lock. O wait espera por um sinal de B para adequirir o lock e até lá deixa o lock sempre aberto. Por causa disto, A quase não tem o lock enquanto espera, o que permite o cpu esquecer-se dela e ir fazer outras coisas mais produtivas.

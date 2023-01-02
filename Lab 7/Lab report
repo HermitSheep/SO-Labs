@@ -1,0 +1,10 @@
+LAB 7 - PIPES
+
+Pipes are a way to conect two threads. You create a pipe in one thread and close the corresponding end in each thread (it coesnt matter which thread has which end, but both threads can only have one end oppen and they cant have the same end). Then you can write information to one end of the pipe as if it were a file, and read it on the other end. This is the way both pipes and named pipes (fifos) work.
+
+The difference between pipes and named pipes is that named pipes live outside the scope of the program, they're created right in the file system, and are therefore more percistent. 
+
+That's all. For the proj i recommend coppying from here, but with a lot of attention to the little details: PIPES ARE UNIDIRECTIONAL. You can only send information in one direction ever, so you have to pay attention to the end you're writting to or receiving from, mainly if you have two piepes that have simmilarly named ends. You also have to remember to close the ends when the time comes.
+
+
+(i coppied the fifo exercise from here: https://github.com/Pesteves2002/SO-Labs/tree/master/7-Tutorial Pesteves2002's solution.)
