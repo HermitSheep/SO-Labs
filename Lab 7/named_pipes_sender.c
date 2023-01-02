@@ -13,6 +13,7 @@
 //mostly copied from Pesteves2002 https://github.com/Pesteves2002/SO-Labs/tree/master/7-Tutorial
 
 #define FIFO_PATHNAME "fifo.pipe"
+#define BUFFER_SIZE (128)
 
 // Helper function to send messages
 // Retries to send whatever was not sent in the beginning
