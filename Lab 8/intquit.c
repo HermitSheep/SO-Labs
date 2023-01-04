@@ -11,7 +11,7 @@
 
 //SIGINT = ctrl c
 
-static void sig_handler(int sig) {
+static int sig_handler(int sig) {
 	static int count = 0;
 
 	// UNSAFE: This handler uses non-async-signal-safe functions (printf(), exit();)
@@ -23,7 +23,7 @@ static void sig_handler(int sig) {
 		if (signal(SIGINT, sig_handler) == SIG_ERR) exit(EXIT_FAILURE);
 		count++;
 		fprintf(stderr, "Caught SIGINT (%d)\n", count);
-		return;  // Resume execution at point of interruption
+		return count;  // Resume execution a
 	}
 
 	// Must be SIGQUIT - print a message and terminate the process
